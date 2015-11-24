@@ -1,3 +1,36 @@
+<?php
+	include_once('db_pro.php');
+ 
+	if( isset($_GET['id']) )
+	{
+		$id = $_GET['id'];
+		$res= mysql_query("SELECT * FROM MyGuests WHERE id='$id'");
+		$row= mysql_fetch_array($res);
+	}
+ 
+	if( isset($_POST['firstname]']) )
+	{
+		$firstname = $_POST['firstname'];
+		$id  	 = $_POST['id'];
+		$sql     = "UPDATE MyGuests SET name='$firstname' WHERE id='$id'";
+		$res 	 = mysql_query($sql) 
+                                    or die("Could not update".mysql_error());
+		echo "<meta http-equiv='refresh' content='0;url=list_record.php'>";
+	}
+
+?>
+
+<form action="update.php" method="POST">
+Name: <input type="text" name="`firstname" value="<?php echo $row[1]; ?>"><br/>
+<input type="hidden" name="id" value="<?php echo $row[0]; ?>">
+<input type="submit" value=" Update "/>
+</form>
+
+
+
+
+<!--
+
 <html>
 <head>
 </head>
@@ -6,6 +39,7 @@
 <form method = "post" action = "update_ac.php">
 
 <?php
+/*
 $host="localhost"; // Host name 
 $username="root"; // Mysql username 
 $password="csirhrdg"; // Mysql password 
