@@ -7,7 +7,7 @@
 <?php
 /*
 Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password)
+server with default setting (user 'root' with no password)	1
 */
 $servername = "localhost";
 $username = "root";
